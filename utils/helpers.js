@@ -46,14 +46,14 @@ export function isBetween (num, x, y) {
   }
 
 
-  export function getMetricMetaInfo () {
+  export function getMetricMetaInfo (metric) {
     const info = {
       run: {
-        displayName: 'Run',
+        displayName: "Run",
         max: 50,
-        unit: 'miles',
+        unit: "miles",
         step: 1,
-        type: 'steppers',
+        type: "steppers",
         getIcon(){
           return (
             <View>
@@ -67,25 +67,75 @@ export function isBetween (num, x, y) {
 
       },
       bike: {
-        displayName: 'Bike',
+        displayName: "Bike",
         max: 100,
-        unit: 'miles',
+        unit: "miles",
         step: 1,
-        type: 'steppers',
+        type: "steppers",
         getIcon(){
           return (
             <View>
-              <MaterialIcons
+              <MaterialCommunityIcons
                 name='bike'
                 color={'black'}
                 size={35}/>
             </View>
           )
         }
-
       },
-      swim: {},
-      sleep: {},
-      eat: {}
+      swim: {
+        displayName: "Swim",
+        max: 9900,
+        unit: "meters",
+        step: 100,
+        type: "steppers",
+        getIcon(){
+          return (
+            <View>
+              <MaterialCommunityIcons
+                name='swim'
+                color={white}
+                size={35}/>
+            </View>
+          )
+        }
+      },
+      sleep: {
+        displayName: "Sleep",
+        max: 24,
+        unit: "hours",
+        step: 1,
+        type: "slider",
+        getIcon(){
+          return (
+            <View>
+              <FontAwesome
+                name='bed'
+                color={white}
+                size={35}/>
+            </View>
+          )
+        }
+      },
+      eat: {
+        displayName: "Eat",
+        max: 10,
+        unit: "rating",
+        step: 1,
+        type: "slider",
+        getIcon(){
+          return (
+            <View>
+              <MaterialCommunityIcons
+                name='food'
+                color={white}
+                size={35}/>
+            </View>
+          )
+        }
+      }
     }
+    
+    return typeof metric === 'undefined' ? info : info[metric]
+
   }
